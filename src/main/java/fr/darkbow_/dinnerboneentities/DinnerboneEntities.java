@@ -38,8 +38,8 @@ public class DinnerboneEntities extends JavaPlugin {
                 for(Entity entity : world.getEntities()){
                     if(!(entity instanceof Player)){
                         if(entity.getCustomName() == null || (entity.getCustomName() != null && !entity.getCustomName().equals("Dinnerbone") && getConfig().getBoolean("RenameAlreadyRenamedEntities"))){
-                            entity.setCustomName("Dinnerbone");
                             entity.setCustomNameVisible(false);
+                            entity.setCustomName("Dinnerbone");
                         }
                     }
                 }

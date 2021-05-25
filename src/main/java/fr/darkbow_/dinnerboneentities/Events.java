@@ -12,8 +12,8 @@ public class Events implements Listener {
     @EventHandler
     public void onEntitySpawning(EntitySpawnEvent event){
         if(main.getConfig().getBoolean("automatic") && main.getDinnerboneEntitiesConfig().getBoolean(event.getEntityType().name())){
-            event.getEntity().setCustomName("Dinnerbone");
             event.getEntity().setCustomNameVisible(false);
+            event.getEntity().setCustomName("Dinnerbone");
         }
     }
 }

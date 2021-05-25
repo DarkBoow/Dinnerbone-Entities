@@ -1,0 +1,2 @@
+automatic: true
+RenameAlreadyRenamedEntities: false #This action is irreversible

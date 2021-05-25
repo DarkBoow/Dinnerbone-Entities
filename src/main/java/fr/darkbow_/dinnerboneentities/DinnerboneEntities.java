@@ -29,22 +29,9 @@ public class DinnerboneEntities extends JavaPlugin {
         instance = this;
 
         saveDefaultConfig();
-
         createDinnerboneEntitiesFile();
 
         getServer().getPluginManager().registerEvents(new Events(this), this);
-
-        for(EntityType etype : EntityType.values()){
-            if(etype != EntityType.PLAYER){
-                getDinnerboneEntitiesConfig().set(etype.name(), true);
-            }
-        }
-
-        try {
-            dinnerboneentitiesconfig.save(dinnerboneentitiesfile);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
 
         if(getConfig().getBoolean("automatic")){
             for(World world : Bukkit.getWorlds()){

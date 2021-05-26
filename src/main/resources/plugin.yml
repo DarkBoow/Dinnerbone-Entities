@@ -3,3 +3,7 @@ author: DarkBow_
 version: 1.0
 main: fr.darkbow_.dinnerboneentities.DinnerboneEntities
 api-version: 1.16
+commands:
+  dinnerboneentities:
+    description: Dinnerbone Entities command
+    permission: dinnerboneentities.admin

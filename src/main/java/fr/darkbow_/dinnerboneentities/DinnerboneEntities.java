@@ -6,12 +6,12 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class DinnerboneEntities extends JavaPlugin {
 
@@ -20,6 +20,9 @@ public class DinnerboneEntities extends JavaPlugin {
     public DinnerboneEntities getInstance() {
         return instance;
     }
+
+    private File messagesfile;
+    private FileConfiguration messagesconfig;
 
     private File dinnerboneentitiesfile;
     private FileConfiguration dinnerboneentitiesconfig;
@@ -30,6 +33,7 @@ public class DinnerboneEntities extends JavaPlugin {
 
         saveDefaultConfig();
         createDinnerboneEntitiesFile();
+        createMessagesFile();
 
         getServer().getPluginManager().registerEvents(new Events(this), this);
 
@@ -45,6 +49,8 @@ public class DinnerboneEntities extends JavaPlugin {
                 }
             }
         }
+
+        Objects.requireNonNull(getCommand("dinnerboneentities")).setExecutor(new CommandDinnerboneEntities(this));
 
         System.out.println("[Dinnerbone Entities] Plugin ON!");
     }
@@ -72,6 +78,29 @@ public class DinnerboneEntities extends JavaPlugin {
         dinnerboneentitiesconfig = new YamlConfiguration();
         try {
             dinnerboneentitiesconfig.load(dinnerboneentitiesfile);
+        } catch (IOException | InvalidConfigurationException e){
+            e.printStackTrace();
+        }
+    }
+
+    public FileConfiguration getMessagesConfig(){
+        return this.messagesconfig;
+    }
+
+    public File getMessagesFile(){
+        return this.messagesfile;
+    }
+
+    private void createMessagesFile(){
+        messagesfile = new File(getDataFolder(), "messages.yml");
+        if(!messagesfile.exists()){
+            messagesfile.getParentFile().mkdirs();
+            saveResource("messages.yml", false);
+        }
+
+        messagesconfig = new YamlConfiguration();
+        try {
+            messagesconfig.load(messagesfile);
         } catch (IOException | InvalidConfigurationException e){
             e.printStackTrace();
         }

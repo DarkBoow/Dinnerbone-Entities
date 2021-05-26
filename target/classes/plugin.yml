@@ -7,3 +7,4 @@ commands:
   dinnerboneentities:
     description: Dinnerbone Entities command
     permission: dinnerboneentities.admin
+    aliases: [de, dinnerbonee, dentities]

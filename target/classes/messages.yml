@@ -1,2 +1,11 @@
 WrongCommand: '&cWrong command. Type "/help" for help"'
 PluginReloaded: "&3&l[Dinnerbone Entities] &aPlugin Reloaded"
+AutomaticToggle: "&aPlugin set from %oldvalue%&a to %value%"
+HelpCommand: "&3&l[Dinnerbone Entities]\n&6/dinnerboneentities auto &b: &aToggle the automatic status of the plugin.\n&6/dinnerboneentities reload &b: &aReload the config and message files."
+
+PluginOn: "[Dinnerbone Entities] Plugin ON!"
+PluginOff: "[Dinnerbone Entities] Plugin OFF!"
+
+
+Boolean_true: "&atrue"
+Boolean_false: "&cfalse"

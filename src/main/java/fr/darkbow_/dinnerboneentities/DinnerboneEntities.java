@@ -52,12 +52,12 @@ public class DinnerboneEntities extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("dinnerboneentities")).setExecutor(new CommandDinnerboneEntities(this));
 
-        System.out.println("[Dinnerbone Entities] Plugin ON!");
+        System.out.println(Objects.requireNonNull(getMessagesConfig().getString("PluginOn")).replace("&", "§"));
     }
 
     @Override
     public void onDisable() {
-        System.out.println("[Dinnerbone Entities] Plugin OFF!");
+        System.out.println(Objects.requireNonNull(getMessagesConfig().getString("PluginOff")).replace("&", "§"));
     }
 
     public FileConfiguration getDinnerboneEntitiesConfig(){

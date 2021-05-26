@@ -34,9 +34,20 @@ public class CommandDinnerboneEntities implements CommandExecutor {
                 }
 
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("PluginReloaded")).replace("&", "§"));
+            } else if(args[0].equalsIgnoreCase("help")){
+                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("HelpCommand")).replace("&", "§"));
+            } else if(args[0].equalsIgnoreCase("auto") || args[0].equalsIgnoreCase("automatic") || args[0].equalsIgnoreCase("automatique")){
+                main.getConfig().set("automatic", !main.getConfig().getBoolean("automatic"));
+                main.saveDefaultConfig();
+
+                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("&", "§"));
             } else {
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("WrongCommand")).replace("&", "§"));
             }
+        }
+
+        if(args.length > 1){
+            sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("WrongCommand")).replace("&", "§"));
         }
 
         return false;

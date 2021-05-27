@@ -69,7 +69,7 @@ public class CommandDinnerboneEntities implements CommandExecutor {
                     }
                 }
 
-                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("&", "§"));
+                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + main.getConfig().getBoolean("auto")))).replace("&", "§"));
             } else {
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("WrongCommand")).replace("&", "§"));
             }

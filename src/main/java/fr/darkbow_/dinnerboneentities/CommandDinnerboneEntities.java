@@ -1,12 +1,16 @@
 package fr.darkbow_.dinnerboneentities;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -70,7 +74,19 @@ public class CommandDinnerboneEntities implements CommandExecutor {
                 }
 
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + main.getConfig().getBoolean("auto")))).replace("&", "§"));
-            } else {
+            } else if(args[0].equalsIgnoreCase("stick")){
+                if(sender instanceof Player){
+                    Player player = (Player) sender;
+                    ItemStack dinnerboneentitiesstick = new ItemStack(Material.STICK, 1);
+                    ItemMeta stickMeta = dinnerboneentitiesstick.getItemMeta();
+                    if(stickMeta != null){
+                        stickMeta.setDisplayName(main.getConfig().getString("ToggleStick_Name"));
+                        dinnerboneentitiesstick.setItemMeta(stickMeta);
+                        player.getInventory().addItem(dinnerboneentitiesstick);
+                        player.updateInventory();
+                    }
+                }
+            }else {
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("WrongCommand")).replace("&", "§"));
             }
         }

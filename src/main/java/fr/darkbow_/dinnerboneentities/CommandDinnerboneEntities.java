@@ -76,7 +76,7 @@ public class CommandDinnerboneEntities implements CommandExecutor {
                     }
                 }
 
-                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + main.getConfig().getBoolean("auto")))).replace("&", "§"));
+                sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("automatic")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + main.getConfig().getBoolean("automatic")))).replace("&", "§"));
             } else if(args[0].equalsIgnoreCase("stick") || args[0].equalsIgnoreCase("wand")){
                 if(sender instanceof Player){
                     Player player = (Player) sender;

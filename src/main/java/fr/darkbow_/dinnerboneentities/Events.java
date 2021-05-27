@@ -7,6 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.Objects;
+
 public class Events implements Listener {
     private DinnerboneEntities main;
 
@@ -23,9 +25,8 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event){
         if(event.getItem() != null){
-            if(event.getItem().getType() == Material.STICK && event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null && event.getItem().getItemMeta().hasDisplayName() && event.getItem().getItemMeta().getDisplayName().equals(main.getConfig().getString("ToggleStick_Name"))){
+            if(event.getItem().getType() == Material.STICK && event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null && event.getItem().getItemMeta().hasDisplayName() && event.getItem().getItemMeta().getDisplayName().equals(Objects.requireNonNull(main.getConfig().getString("ToggleStick_Name")).replace("&", "§"))){
                 if(event.getAction().name().contains("RIGHT") && event.getPlayer().hasPermission("dinnerboneentities.admin")){
-                    Bukkit.broadcastMessage("Yes");
                     event.getPlayer().performCommand("dinnerboneentities auto");
                 }
             }

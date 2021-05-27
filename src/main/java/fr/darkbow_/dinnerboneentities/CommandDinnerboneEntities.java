@@ -74,13 +74,13 @@ public class CommandDinnerboneEntities implements CommandExecutor {
                 }
 
                 sender.sendMessage(Objects.requireNonNull(main.getMessagesConfig().getString("AutomaticToggle")).replace("%oldvalue%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + !main.getConfig().getBoolean("auto")))).replace("%value%", Objects.requireNonNull(main.getMessagesConfig().getString("Boolean_" + main.getConfig().getBoolean("auto")))).replace("&", "§"));
-            } else if(args[0].equalsIgnoreCase("stick")){
+            } else if(args[0].equalsIgnoreCase("stick") || args[0].equalsIgnoreCase("wand")){
                 if(sender instanceof Player){
                     Player player = (Player) sender;
                     ItemStack dinnerboneentitiesstick = new ItemStack(Material.STICK, 1);
                     ItemMeta stickMeta = dinnerboneentitiesstick.getItemMeta();
                     if(stickMeta != null){
-                        stickMeta.setDisplayName(main.getConfig().getString("ToggleStick_Name"));
+                        stickMeta.setDisplayName(Objects.requireNonNull(main.getConfig().getString("ToggleStick_Name")).replace("&", "§"));
                         dinnerboneentitiesstick.setItemMeta(stickMeta);
                         player.getInventory().addItem(dinnerboneentitiesstick);
                         player.updateInventory();

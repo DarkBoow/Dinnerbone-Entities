@@ -1,4 +1,4 @@
 automatic: true
-RenameAlreadyRenamedEntities: false #This action is irreversible
+RenameAlreadyRenamedEntities: false
 global_command_action: true
 ToggleStick_Name: "&a&lDinnerboneEntities &e&lStick"

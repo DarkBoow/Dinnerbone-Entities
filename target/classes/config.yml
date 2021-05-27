@@ -1,2 +1,3 @@
 automatic: true
 RenameAlreadyRenamedEntities: false #This action is irreversible
+global_command_action: true

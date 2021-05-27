@@ -27,6 +27,9 @@ public class DinnerboneEntities extends JavaPlugin {
     private File dinnerboneentitiesfile;
     private FileConfiguration dinnerboneentitiesconfig;
 
+    private File globalentitiesfile;
+    private FileConfiguration globalentitiesconfig;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -34,6 +37,7 @@ public class DinnerboneEntities extends JavaPlugin {
         saveDefaultConfig();
         createDinnerboneEntitiesFile();
         createMessagesFile();
+        createGlobalEntitiesFile();
 
         getServer().getPluginManager().registerEvents(new Events(this), this);
 
@@ -78,6 +82,29 @@ public class DinnerboneEntities extends JavaPlugin {
         dinnerboneentitiesconfig = new YamlConfiguration();
         try {
             dinnerboneentitiesconfig.load(dinnerboneentitiesfile);
+        } catch (IOException | InvalidConfigurationException e){
+            e.printStackTrace();
+        }
+    }
+
+    public FileConfiguration getGlobalEntitiesConfig(){
+        return this.globalentitiesconfig;
+    }
+
+    public File getGlobalEntitiesFile(){
+        return this.globalentitiesfile;
+    }
+
+    private void createGlobalEntitiesFile(){
+        globalentitiesfile = new File(getDataFolder(), "globalentities.yml");
+        if(!globalentitiesfile.exists()){
+            globalentitiesfile.getParentFile().mkdirs();
+            saveResource("globalentities.yml", false);
+        }
+
+        globalentitiesconfig = new YamlConfiguration();
+        try {
+            globalentitiesconfig.load(globalentitiesfile);
         } catch (IOException | InvalidConfigurationException e){
             e.printStackTrace();
         }

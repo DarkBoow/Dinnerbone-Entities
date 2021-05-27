@@ -1,6 +1,6 @@
 WrongCommand: '&cWrong command. Type "/help" for help"'
 PluginReloaded: "&3&l[Dinnerbone Entities] &aPlugin Reloaded"
-AutomaticToggle: "&b[Dinnerbone Entities] Automatic %value%"
+AutomaticToggle: "&3Automatic %value%"
 HelpCommand: "&3&l[Dinnerbone Entities]\n&6/dinnerboneentities auto &b: &aToggle the automatic status of the plugin.\n&6/dinnerboneentities reload &b: &aReload the config and message files."
 
 PluginOn: "[Dinnerbone Entities] Plugin ON!"

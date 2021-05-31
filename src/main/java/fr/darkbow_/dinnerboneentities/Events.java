@@ -2,6 +2,8 @@ package fr.darkbow_.dinnerboneentities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
@@ -26,8 +28,22 @@ public class Events implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event){
         if(event.getItem() != null){
             if(event.getItem().getType() == Material.STICK && event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null && event.getItem().getItemMeta().hasDisplayName() && event.getItem().getItemMeta().getDisplayName().equals(Objects.requireNonNull(main.getConfig().getString("ToggleStick_Name")).replace("&", "§"))){
-                if(event.getAction().name().contains("RIGHT") && event.getPlayer().hasPermission("dinnerboneentities.admin")){
-                    event.getPlayer().performCommand("dinnerboneentities auto");
+                if(event.getPlayer().hasPermission("dinnerboneentities.admin")){
+                    if(event.getAction().name().contains("LEFT")){
+                        for(World world : Bukkit.getWorlds()){
+                            for(Entity entity : world.getEntities()){
+                                if(entity != event.getPlayer()){
+                                    if(main.getGlobalEntitiesConfig().contains(entity.getType().name()) && main.getGlobalEntitiesConfig().getBoolean(entity.getType().name())){
+                                        entity.setVelocity(entity.getVelocity().setY(entity.getVelocity().getY() + 0.5));
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if(event.getAction().name().contains("RIGHT")){
+                        event.getPlayer().performCommand("dinnerboneentities auto");
+                    }
                 }
             }
         }

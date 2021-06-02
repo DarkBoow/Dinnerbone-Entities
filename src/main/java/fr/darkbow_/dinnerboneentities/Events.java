@@ -29,12 +29,12 @@ public class Events implements Listener {
         if(event.getItem() != null){
             if(event.getItem().getType() == Material.STICK && event.getItem().hasItemMeta() && event.getItem().getItemMeta() != null && event.getItem().getItemMeta().hasDisplayName() && event.getItem().getItemMeta().getDisplayName().equals(Objects.requireNonNull(main.getConfig().getString("ToggleStick_Name")).replace("&", "§"))){
                 if(event.getPlayer().hasPermission("dinnerboneentities.admin")){
-                    if(event.getAction().name().contains("LEFT")){
+                    if(event.getAction().name().contains("LEFT") && main.getConfig().getBoolean("LeftClickMakeEntitiesJump")){
                         for(World world : Bukkit.getWorlds()){
                             for(Entity entity : world.getEntities()){
                                 if(entity != event.getPlayer()){
                                     if(main.getGlobalEntitiesConfig().contains(entity.getType().name()) && main.getGlobalEntitiesConfig().getBoolean(entity.getType().name())){
-                                        entity.setVelocity(entity.getVelocity().setY(entity.getVelocity().getY() + 0.8));
+                                        entity.setVelocity(entity.getVelocity().setY(entity.getVelocity().getY() + main.getConfig().getDouble("JumpHeight")));
                                     }
                                 }
                             }

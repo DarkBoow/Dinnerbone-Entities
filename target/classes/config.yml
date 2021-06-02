@@ -2,3 +2,5 @@ automatic: true
 RenameAlreadyRenamedEntities: false
 global_command_action: true
 ToggleStick_Name: "&a&lDinnerboneEntities &e&lStick"
+LeftClickMakeEntitiesJump: true
+JumpHeight: 0.8

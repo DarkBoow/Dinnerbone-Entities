@@ -34,7 +34,6 @@ public class Events implements Listener {
                             for(Entity entity : world.getEntities()){
                                 if(entity != event.getPlayer()){
                                     if(main.getGlobalEntitiesConfig().contains(entity.getType().name()) && main.getGlobalEntitiesConfig().getBoolean(entity.getType().name())){
-                                        /*entity.teleport(entity.getLocation().setDirection(event.getPlayer().getLocation().subtract(entity.getLocation()).toVector()));*/
                                         entity.setVelocity(entity.getVelocity().setY(entity.getVelocity().getY() + 0.8));
                                     }
                                 }

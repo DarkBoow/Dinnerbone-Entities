@@ -45,7 +45,7 @@ public class DinnerboneEntities extends JavaPlugin {
             for(World world : Bukkit.getWorlds()){
                 for(Entity entity : world.getEntities()){
                     if(!(entity instanceof Player)){
-                        if(entity.getCustomName() == null || (entity.getCustomName() != null && !entity.getCustomName().equals("Dinnerbone") && getConfig().getBoolean("RenameAlreadyRenamedEntities"))){
+                        if(entity.getCustomName() == null || (entity.getCustomName() != null && !entity.getCustomName().equals("Dinnerbone") && getConfig().getBoolean("RenameAlreadyRenamedEntities") && getDinnerboneEntitiesConfig().getBoolean(entity.getType().name()))){
                             entity.setCustomNameVisible(false);
                             entity.setCustomName("Dinnerbone");
                         }
